@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson13_Task01</title>
+</head>
+<body>
+    <style> 
+        .external-red { 
+        background-color: red 
+    } 
+    </style> 
+
+    <a name="list">список</a> 
+    <ul> 
+        <li><a href="http://google.com">http://google.com</a></li> 
+        <li><a href="/tutorial">/tutorial.html</a></li> 
+        <li><a href="local/path">local/path</a></li> 
+        <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li> 
+        <li><a href="http://nodejs.org">http://nodejs.org</a></li> 
+        <li><a href="http://internal.com/test">http://internal.com/test</a></li> 
+    </ul> 
+
+    <button onclick="MarkExternalsToRed()">  Click Me  </button>
+
+    <script>
+        function MarkExternalsToRed(){
+            var allLinks = document.querySelectorAll('ul > li');
+
+            for(i = 0; i < allLinks.length; i++){
+                var link = allLinks[i].querySelector('a');
+                var linkHref = link.getAttribute('href').toLowerCase();
+            // var mark2 = "ftp://";
+
+                if (linkHref.indexOf("http://")+1 || linkHref.indexOf("ftp://")+1) {
+                    if(linkHref.indexOf("http://internal.com")){
+                        link.setAttribute('class', 'external-red')
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
